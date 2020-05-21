@@ -4,13 +4,13 @@ import {
   SET_UNAUTHENTICATED,
   // LOADING_UI,
   // SET_UNAUTHENTICATED,
-  // LOADING_USER,
+  LOADING_USER,
   // MARK_NOTIFICATIONS_READ
 } from '../types'
 
 const initialState = {
   authenticated: false,
-  // loading: false,
+  loading: false,
   credentials: {},
   likes: [],
   notifications: [],
@@ -28,8 +28,13 @@ export default function (state = initialState, action) {
     case SET_USER:
       return {
         authenticated: true,
-        // loading: false,
+        loading: false,
         ...action.payload,
+      }
+    case LOADING_USER:
+      return {
+        ...state,
+        loading: true,
       }
     default:
       return state

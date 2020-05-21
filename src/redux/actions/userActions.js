@@ -4,7 +4,7 @@ import {
   CLEAR_ERRORS,
   LOADING_UI,
   SET_UNAUTHENTICATED,
-  // LOADING_USER,
+  LOADING_USER,
   // MARK_NOTIFICATIONS_READ
 } from '../types'
 import axios from 'axios'
@@ -49,6 +49,7 @@ export const logoutUser = () => dispatch => {
   dispatch({ type: SET_UNAUTHENTICATED })
 }
 export const getUserData = () => dispatch => {
+  dispatch({ type: LOADING_USER })
   axios
     .get('/user')
     .then(res => {
@@ -57,7 +58,7 @@ export const getUserData = () => dispatch => {
         payload: res.data,
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
 
 const setAuthorizationHeader = token => {
