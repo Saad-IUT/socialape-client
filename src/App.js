@@ -14,7 +14,7 @@ import { SET_AUTHENTICATED } from './redux/types'
 import { logoutUser, getUserData } from './redux/actions/userActions'
 
 //Components
-import NavBar from './components/NavBar'
+import Navbar from './components/Navbar'
 // Pages
 import home from './pages/home'
 import login from './pages/login'
@@ -41,20 +41,12 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
           <Router>
-            <NavBar />
+            <Navbar />
             <div className='container'>
               <Switch>
                 <Route exact path='/' component={home} />
-                <AuthRoute
-                  exact
-                  path='/login'
-                  component={login}
-                />
-                <AuthRoute
-                  exact
-                  path='/signup'
-                  component={signup}
-                />
+                <AuthRoute exact path='/login' component={login} />
+                <AuthRoute exact path='/signup' component={signup} />
                 {/* <Route exact path='/users/:handle' component={user} /> */}
                 {/* <Route
                 exact

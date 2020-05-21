@@ -7,7 +7,6 @@ import EditDetails from './EditDetails'
 // MUI stuff
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Tooltip from '@material-ui/core/Tooltip';
 import MuiLink from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 //Redux
@@ -15,11 +14,11 @@ import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../redux/actions/userActions';
 // Icons
 import LocationOn from '@material-ui/icons/LocationOn';
-import IconButton from '@material-ui/core/IconButton';
 import LinkIcon from '@material-ui/icons/Link';
 import EditIcon from '@material-ui/icons/Edit';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
+import MyButton from '../util/MyButton';
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -60,16 +59,13 @@ class Profile extends Component {
               hidden="hidden"
               onChange={this.handleImageChange}
             />
-            <Tooltip title="Edit profile picture" placement="top">
-              <IconButton
-                // tip="Edit profile picture"
-                onClick={this.handleEditPicture}
-                className="button"
-              // btnClassName="button"
-              >
-                <EditIcon color="primary" />
-              </IconButton>
-            </Tooltip>
+            <MyButton
+              tip="Edit profile picture"
+              onClick={this.handleEditPicture}
+              btnClassName="button"
+            >
+              <EditIcon color="primary" />
+            </MyButton>
           </div>
           <hr />
           <div className="profile-details">
@@ -98,12 +94,13 @@ class Profile extends Component {
             <CalendarToday color="primary" />{' '}
             <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
           </div>
-          <Tooltip title="Logout" placement="top">
-            <IconButton onClick={this.handleLogout}>
-              <KeyboardReturn color="primary" />
-            </IconButton>
-          </Tooltip>
-          <EditDetails/>
+          <MyButton
+            tip="Logout"
+            onClick={this.handleLogout}
+          >
+            <KeyboardReturn color="primary" />
+          </MyButton>
+          <EditDetails />
         </div>
       </Paper>
     ) : (
