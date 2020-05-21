@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
-
-
+import EditDetails from './EditDetails'
 // MUI stuff
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 import MuiLink from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-
-
 //Redux
 import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../redux/actions/userActions';
@@ -22,9 +19,12 @@ import IconButton from '@material-ui/core/IconButton';
 import LinkIcon from '@material-ui/icons/Link';
 import EditIcon from '@material-ui/icons/Edit';
 import CalendarToday from '@material-ui/icons/CalendarToday';
+import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
+
 const styles = theme => ({
   ...theme.spreadThis,
 })
+
 class Profile extends Component {
   handleImageChange = (event) => {
     const image = event.target.files[0];
@@ -35,6 +35,9 @@ class Profile extends Component {
   handleEditPicture = () => {
     const fileInput = document.getElementById('imageInput');
     fileInput.click();
+  };
+  handleLogout = () => {
+    this.props.logoutUser();
   };
   render() {
     const {
@@ -95,6 +98,12 @@ class Profile extends Component {
             <CalendarToday color="primary" />{' '}
             <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
           </div>
+          <Tooltip title="Logout" placement="top">
+            <IconButton onClick={this.handleLogout}>
+              <KeyboardReturn color="primary" />
+            </IconButton>
+          </Tooltip>
+          <EditDetails/>
         </div>
       </Paper>
     ) : (
