@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { Grid } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 
 import Scream from '../components/scream/Scream'
 import Profile from '../components/profile/Profile'
+import ScreamSkeleton from '../util/ScreamSkeleton'
 
 import { connect } from 'react-redux'
 import { getScreams } from '../redux/actions/dataActions'
-import ScreamSkeleton from '../util/ScreamSkeleton'
+
 class home extends Component {
   componentDidMount() {
     this.props.getScreams()
@@ -20,7 +21,7 @@ class home extends Component {
       <ScreamSkeleton />
     )
     return (
-      <Grid container spacing={1}>
+      <Grid container spacing={16}>
         <Grid item sm={8} xs={12}>
           {recentScreamsMarkup}
         </Grid>

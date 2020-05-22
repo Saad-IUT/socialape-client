@@ -5,7 +5,7 @@ import {
   LOADING_UI,
   SET_UNAUTHENTICATED,
   LOADING_USER,
-  MARK_NOTIFICATIONS_READ
+  MARK_NOTIFICATIONS_READ,
 } from '../types'
 import axios from 'axios'
 
@@ -26,6 +26,7 @@ export const loginUser = (userData, history) => dispatch => {
       })
     })
 }
+
 export const signupUser = (newUserData, history) => dispatch => {
   dispatch({ type: LOADING_UI })
   axios
@@ -43,11 +44,13 @@ export const signupUser = (newUserData, history) => dispatch => {
       })
     })
 }
+
 export const logoutUser = () => dispatch => {
   localStorage.removeItem('FBIdToken')
   delete axios.defaults.headers.common['Authorization']
   dispatch({ type: SET_UNAUTHENTICATED })
 }
+
 export const getUserData = () => dispatch => {
   dispatch({ type: LOADING_USER })
   axios
@@ -58,8 +61,9 @@ export const getUserData = () => dispatch => {
         payload: res.data,
       })
     })
-    .catch(err => console.error(err))
+    .catch(err => console.log(err))
 }
+
 export const uploadImage = formData => dispatch => {
   dispatch({ type: LOADING_USER })
   axios
@@ -67,8 +71,9 @@ export const uploadImage = formData => dispatch => {
     .then(() => {
       dispatch(getUserData())
     })
-    .catch(err => console.error(err))
+    .catch(err => console.log(err))
 }
+
 export const editUserDetails = userDetails => dispatch => {
   dispatch({ type: LOADING_USER })
   axios
@@ -76,20 +81,22 @@ export const editUserDetails = userDetails => dispatch => {
     .then(() => {
       dispatch(getUserData())
     })
-    .catch(err => console.error(err))
+    .catch(err => console.log(err))
 }
+
+export const markNotificationsRead = notificationIds => dispatch => {
+  axios
+    .post('/notifications', notificationIds)
+    .then(res => {
+      dispatch({
+        type: MARK_NOTIFICATIONS_READ,
+      })
+    })
+    .catch(err => console.log(err))
+}
+
 const setAuthorizationHeader = token => {
   const FBIdToken = `Bearer ${token}`
   localStorage.setItem('FBIdToken', FBIdToken)
   axios.defaults.headers.common['Authorization'] = FBIdToken
 }
-export const markNotificationsRead = (notificationIds) => (dispatch) => {
-  axios
-    .post('/notifications', notificationIds)
-    .then((res) => {
-      dispatch({
-        type: MARK_NOTIFICATIONS_READ
-      });
-    })
-    .catch((err) => console.log(err));
-};

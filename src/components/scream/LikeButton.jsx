@@ -39,10 +39,10 @@ export class LikeButton extends Component {
         <FavoriteIcon color="primary" />
       </MyButton>
     ) : (
-      <MyButton tip="Like" onClick={this.likeScream}>
-        <FavoriteBorder color="primary" />
-      </MyButton>
-    );
+          <MyButton tip="Like" onClick={this.likeScream}>
+            <FavoriteBorder color="primary" />
+          </MyButton>
+        );
     return likeButton;
   }
 }

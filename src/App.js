@@ -10,7 +10,7 @@ import store from './redux/store'
 import { SET_AUTHENTICATED } from './redux/types'
 import { logoutUser, getUserData } from './redux/actions/userActions'
 // Components
-import Navbar from './components/layout/NavBar'
+import Navbar from './components/layout/Navbar'
 import themeObject from './util/theme'
 import AuthRoute from './util/AuthRoute'
 // Pages
@@ -23,8 +23,8 @@ import axios from 'axios'
 
 const theme = createMuiTheme(themeObject)
 
-// axios.defaults.baseURL =
-//   'https://europe-west1-socialape-d081e.cloudfunctions.net/api'
+axios.defaults.baseURL =
+  'https://europe-west1-socialape-d081e.cloudfunctions.net/api'
 
 const token = localStorage.FBIdToken
 if (token) {

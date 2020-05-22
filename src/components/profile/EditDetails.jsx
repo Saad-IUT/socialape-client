@@ -1,4 +1,3 @@
-// Bug delete on removing field and receive when nothing passed
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -16,12 +15,12 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 // Icons
 import EditIcon from '@material-ui/icons/Edit';
 
-const styles = theme => ({
-  ...theme.spreadThis,
+const styles = (theme) => ({
+  ...theme,
   button: {
-    float: "right"
+    float: 'right'
   }
-})
+});
 
 class EditDetails extends Component {
   state = {
@@ -31,11 +30,10 @@ class EditDetails extends Component {
     open: false
   };
   mapUserDetailsToState = (credentials) => {
-    const { bio, website, location } = credentials
     this.setState({
-      bio: bio ? bio : '',
-      website: website ? website : '',
-      location: location ? location : ''
+      bio: credentials.bio ? credentials.bio : '',
+      website: credentials.website ? credentials.website : '',
+      location: credentials.location ? credentials.location : ''
     });
   };
   handleOpen = () => {
@@ -47,29 +45,29 @@ class EditDetails extends Component {
   };
   componentDidMount() {
     const { credentials } = this.props;
-    this.mapUserDetailsToState(credentials)
+    this.mapUserDetailsToState(credentials);
   }
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
   handleSubmit = () => {
-    const { bio, website, location } = this.state
     const userDetails = {
-      bio,
-      website,
-      location
+      bio: this.state.bio,
+      website: this.state.website,
+      location: this.state.location
     };
     this.props.editUserDetails(userDetails);
     this.handleClose();
   };
   render() {
-    const { classes } = this.props
+    const { classes } = this.props;
     return (
       <Fragment>
         <MyButton
-          tip="Edit details"
+          tip="Edit Details"
           onClick={this.handleOpen}
           btnClassName={classes.button}
         >
@@ -86,7 +84,7 @@ class EditDetails extends Component {
             <form>
               <TextField
                 name="bio"
-                type="text"
+                tpye="text"
                 label="Bio"
                 multiline
                 rows="3"
@@ -100,7 +98,7 @@ class EditDetails extends Component {
                 name="website"
                 tpye="text"
                 label="Website"
-                placeholder="Your personal/professional website"
+                placeholder="Your personal/professinal website"
                 className={classes.textField}
                 value={this.state.website}
                 onChange={this.handleChange}
@@ -128,7 +126,7 @@ class EditDetails extends Component {
           </DialogActions>
         </Dialog>
       </Fragment>
-    )
+    );
   }
 }
 

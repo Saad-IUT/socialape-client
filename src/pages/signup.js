@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'
 import AppIcon from '../images/icon.png'
-// import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 // MUI Stuff
@@ -14,17 +13,21 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 // Redux stuff
 import { connect } from 'react-redux'
 import { signupUser } from '../redux/actions/userActions'
+
 const styles = theme => ({
-  ...theme.spreadThis,
+  ...theme,
 })
 
 class signup extends Component {
-  state = {
-    email: '',
-    password: '',
-    confirmPassword: '',
-    handle: '',
-    errors: {},
+  constructor() {
+    super()
+    this.state = {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      handle: '',
+      errors: {},
+    }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
@@ -55,13 +58,14 @@ class signup extends Component {
       UI: { loading },
     } = this.props
     const { errors } = this.state
+
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
         <Grid item sm>
-          <img src={AppIcon} alt='Monkey' className={classes.image} />
+          <img src={AppIcon} alt='monkey' className={classes.image} />
           <Typography variant='h2' className={classes.pageTitle}>
-            Signup
+            SignUp
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
@@ -124,14 +128,14 @@ class signup extends Component {
               className={classes.button}
               disabled={loading}
             >
-              Signup
+              SignUp
               {loading && (
                 <CircularProgress size={30} className={classes.progress} />
               )}
             </Button>
             <br />
             <small>
-              Already have an account? Login <Link to='/login'>here</Link>
+              Already have an account ? Login <Link to='/login'>here</Link>
             </small>
           </form>
         </Grid>

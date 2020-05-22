@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'
 import AppIcon from '../images/icon.png'
-// import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 // MUI Stuff
@@ -14,15 +13,19 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 // Redux stuff
 import { connect } from 'react-redux'
 import { loginUser } from '../redux/actions/userActions'
+
 const styles = theme => ({
-  ...theme.spreadThis,
+  ...theme,
 })
 
 class login extends Component {
-  state = {
-    email: '',
-    password: '',
-    errors: {},
+  constructor() {
+    super()
+    this.state = {
+      email: '',
+      password: '',
+      errors: {},
+    }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
@@ -48,11 +51,12 @@ class login extends Component {
       UI: { loading },
     } = this.props
     const { errors } = this.state
+
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
         <Grid item sm>
-          <img src={AppIcon} alt='Monkey' className={classes.image} />
+          <img src={AppIcon} alt='monkey' className={classes.image} />
           <Typography variant='h2' className={classes.pageTitle}>
             Login
           </Typography>
@@ -100,7 +104,7 @@ class login extends Component {
             </Button>
             <br />
             <small>
-              Don't have an account? Sign up <Link to='/signup'>here</Link>
+              dont have an account ? sign up <Link to='/signup'>here</Link>
             </small>
           </form>
         </Grid>
@@ -116,6 +120,7 @@ login.propTypes = {
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
 }
+
 const mapStateToProps = state => ({
   user: state.user,
   UI: state.UI,
@@ -124,6 +129,7 @@ const mapStateToProps = state => ({
 const mapActionsToProps = {
   loginUser,
 }
+
 export default connect(
   mapStateToProps,
   mapActionsToProps
