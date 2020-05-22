@@ -17,7 +17,7 @@ const styles = {
   deleteButton: {
     position: 'absolute',
     left: '90%',
-    bottom: '15%'
+    top: '10%'
   }
 };
 class DeleteScream extends Component {
