@@ -3,7 +3,7 @@ import {
   LIKE_SCREAM,
   UNLIKE_SCREAM,
   LOADING_DATA,
-  // DELETE_SCREAM,
+  DELETE_SCREAM,
   // POST_SCREAM,
   // SET_SCREAM,
   // SUBMIT_COMMENT
@@ -45,14 +45,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
       }
-    // case DELETE_SCREAM:
-    //   index = state.screams.findIndex(
-    //     scream => scream.screamId === action.payload
-    //   )
-    //   state.screams.splice(index, 1)
-    //   return {
-    //     ...state,
-    //   }
+    case DELETE_SCREAM:
+      index = state.screams.findIndex(
+        scream => scream.screamId === action.payload
+      )
+      state.screams.splice(index, 1)
+      return {
+        ...state,
+      }
     // case POST_SCREAM:
     //   return {
     //     ...state,
