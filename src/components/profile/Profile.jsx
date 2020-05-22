@@ -22,7 +22,7 @@ import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 
 const styles = (theme) => ({
-  ...theme
+  ...theme.spreadThis
 });
 
 class Profile extends Component {
@@ -110,7 +110,7 @@ class Profile extends Component {
       ) : (
           <Paper className={classes.paper}>
             <Typography variant="body2" align="center">
-              No profile found, please login again
+              No profile found, please try again
           </Typography>
             <div className={classes.buttons}>
               <Button

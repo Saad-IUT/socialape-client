@@ -16,7 +16,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import EditIcon from '@material-ui/icons/Edit';
 
 const styles = (theme) => ({
-  ...theme,
+  ...theme.spreadThis,
   button: {
     float: 'right'
   }
@@ -54,10 +54,11 @@ class EditDetails extends Component {
     });
   };
   handleSubmit = () => {
+    const { bio, website, location } = this.state
     const userDetails = {
-      bio: this.state.bio,
-      website: this.state.website,
-      location: this.state.location
+      bio,
+      website,
+      location
     };
     this.props.editUserDetails(userDetails);
     this.handleClose();
@@ -98,7 +99,7 @@ class EditDetails extends Component {
                 name="website"
                 tpye="text"
                 label="Website"
-                placeholder="Your personal/professinal website"
+                placeholder="Your personal/professional website"
                 className={classes.textField}
                 value={this.state.website}
                 onChange={this.handleChange}
