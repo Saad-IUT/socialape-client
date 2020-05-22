@@ -36,11 +36,19 @@ class user extends Component {
     const { screams, loading } = this.props.data
     const { screamIdParam } = this.state
 
-    const screamsMarkup = loading ? null : screams === null ? (
+    const screamsMarkup = loading ? (
+      ("Loading...")
+    ) : screams === null ? (
       <p>No screams from this user</p>
     ) : !screamIdParam ? (
       screams.map(scream => <Scream key={scream.screamId} scream={scream} />)
-    ) : null
+    ) : (
+      screams.map(scream => {
+        if (scream.screamId !== screamIdParam)
+          return <Scream key={scream.screamId} scream={scream} />
+        else return <Scream key={scream.screamId} scream={scream} openDialog />
+      })
+    )
 
     return (
       <Grid container spacing={1}>
@@ -48,7 +56,9 @@ class user extends Component {
           {screamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          {this.state.profile === null ? null : (
+          {this.state.profile === null ? (
+            ("Loading...")
+          ) : (
             <StaticProfile profile={this.state.profile} />
           )}
         </Grid>
