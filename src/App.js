@@ -14,7 +14,7 @@ import { SET_AUTHENTICATED } from './redux/types'
 import { logoutUser, getUserData } from './redux/actions/userActions'
 
 //Components
-import Navbar from './components/Navbar'
+import Navbar from './components/layout/NavBar'
 // Pages
 import home from './pages/home'
 import login from './pages/login'

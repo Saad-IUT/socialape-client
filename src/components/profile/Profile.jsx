@@ -11,14 +11,14 @@ import MuiLink from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 //Redux
 import { connect } from 'react-redux';
-import { logoutUser, uploadImage } from '../redux/actions/userActions';
+import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 // Icons
 import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import EditIcon from '@material-ui/icons/Edit';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 const styles = theme => ({
   ...theme.spreadThis,
