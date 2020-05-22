@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import ScreamDialog from './ScreamDialog';
 const styles = {
   card: {
     position: 'relative',
@@ -102,6 +103,7 @@ class Scream extends Component {
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} comments</span>
+          <ScreamDialog screamId={screamId} userHandle={userHandle} />
         </CardContent>
       </Card>
     )
