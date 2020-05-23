@@ -30,7 +30,7 @@ class user extends Component {
           profile: res.data.user,
         })
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   }
   render() {
     const { screams, loading } = this.props.data

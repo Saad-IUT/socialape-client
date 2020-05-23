@@ -4,6 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import NoImg from '../images/no-img.png';
 // MUI
 import Paper from '@material-ui/core/Paper';
+import LinearProgress from '@material-ui/core/LinearProgress';
 // Icons
 import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
@@ -43,8 +44,8 @@ const ProfileSkeleton = (props) => {
         <div className="profile-details">
           <div className={classes.handle} />
           <hr />
-          <div className={classes.fullLine} />
-          <div className={classes.fullLine} />
+          <LinearProgress className={classes.fullLine} />
+          <LinearProgress className={classes.fullLine} />
           <hr />
           <LocationOn color="primary" /> <span>Location</span>
           <hr />

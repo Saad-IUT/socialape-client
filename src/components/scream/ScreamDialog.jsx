@@ -100,7 +100,7 @@ class ScreamDialog extends Component {
     ) : (
         <Grid container spacing={1}>
           <Grid item sm={5}>
-            <img src={userImage} alt="Profile" className={classes.profileImage} />
+            <img src={userImage} alt="profile" className={classes.profileImage} />
           </Grid>
           <Grid item sm={7}>
             <Typography

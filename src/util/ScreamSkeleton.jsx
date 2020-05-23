@@ -7,6 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 
 import withStyles from '@material-ui/core/styles/withStyles';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -58,9 +59,9 @@ const ScreamSkeleton = (props) => {
       <CardContent className={classes.cardContent}>
         <div className={classes.handle} />
         <div className={classes.date} />
-        <div className={classes.fullLine} />
-        <div className={classes.fullLine} />
-        <div className={classes.halfLine} />
+        <LinearProgress className={classes.fullLine} />
+        <LinearProgress className={classes.fullLine} />
+        <LinearProgress className={classes.halfLine} />
       </CardContent>
     </Card>
   ));

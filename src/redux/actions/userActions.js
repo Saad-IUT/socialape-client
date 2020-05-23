@@ -9,6 +9,7 @@ import {
 } from '../types'
 import axios from 'axios'
 
+// Login user
 export const loginUser = (userData, history) => dispatch => {
   dispatch({ type: LOADING_UI })
   axios
@@ -27,6 +28,7 @@ export const loginUser = (userData, history) => dispatch => {
     })
 }
 
+// Signup user
 export const signupUser = (newUserData, history) => dispatch => {
   dispatch({ type: LOADING_UI })
   axios
@@ -45,12 +47,14 @@ export const signupUser = (newUserData, history) => dispatch => {
     })
 }
 
+// Logout user
 export const logoutUser = () => dispatch => {
   localStorage.removeItem('FBIdToken')
   delete axios.defaults.headers.common['Authorization']
   dispatch({ type: SET_UNAUTHENTICATED })
 }
 
+// Get user details
 export const getUserData = () => dispatch => {
   dispatch({ type: LOADING_USER })
   axios
@@ -61,9 +65,10 @@ export const getUserData = () => dispatch => {
         payload: res.data,
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
 
+// Upload image
 export const uploadImage = formData => dispatch => {
   dispatch({ type: LOADING_USER })
   axios
@@ -71,9 +76,10 @@ export const uploadImage = formData => dispatch => {
     .then(() => {
       dispatch(getUserData())
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
 
+// Edit user details
 export const editUserDetails = userDetails => dispatch => {
   dispatch({ type: LOADING_USER })
   axios
@@ -81,9 +87,10 @@ export const editUserDetails = userDetails => dispatch => {
     .then(() => {
       dispatch(getUserData())
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
 
+// Mark notification read
 export const markNotificationsRead = notificationIds => dispatch => {
   axios
     .post('/notifications', notificationIds)
@@ -92,7 +99,7 @@ export const markNotificationsRead = notificationIds => dispatch => {
         type: MARK_NOTIFICATIONS_READ,
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
 
 const setAuthorizationHeader = token => {

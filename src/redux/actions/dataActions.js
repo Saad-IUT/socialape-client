@@ -32,6 +32,8 @@ export const getScreams = () => dispatch => {
       })
     })
 }
+
+// Get a scream
 export const getScream = screamId => dispatch => {
   dispatch({ type: LOADING_UI })
   axios
@@ -43,8 +45,9 @@ export const getScream = screamId => dispatch => {
       })
       dispatch({ type: STOP_LOADING_UI })
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
+
 // Post a scream
 export const postScream = newScream => dispatch => {
   dispatch({ type: LOADING_UI })
@@ -64,6 +67,7 @@ export const postScream = newScream => dispatch => {
       })
     })
 }
+
 // Like a scream
 export const likeScream = screamId => dispatch => {
   axios
@@ -74,8 +78,9 @@ export const likeScream = screamId => dispatch => {
         payload: res.data,
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
+
 // Unlike a scream
 export const unlikeScream = screamId => dispatch => {
   axios
@@ -86,8 +91,9 @@ export const unlikeScream = screamId => dispatch => {
         payload: res.data,
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
+
 // Submit a comment
 export const submitComment = (screamId, commentData) => dispatch => {
   axios
@@ -106,15 +112,18 @@ export const submitComment = (screamId, commentData) => dispatch => {
       })
     })
 }
+
+// Delete a scream
 export const deleteScream = screamId => dispatch => {
   axios
     .delete(`/scream/${screamId}`)
     .then(() => {
       dispatch({ type: DELETE_SCREAM, payload: screamId })
     })
-    .catch(err => console.log(err))
+    .catch(err => console.error(err))
 }
 
+// Get user details
 export const getUserData = userHandle => dispatch => {
   dispatch({ type: LOADING_DATA })
   axios
